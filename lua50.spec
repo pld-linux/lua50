@@ -2,17 +2,17 @@
 Summary:	A simple lightweight powerful embeddable programming language
 Summary(pl):	Prosty, lekki ale potê¿ny, osadzalny jêzyk programowania
 Name:		lua50
-Version:	5.0.1
+Version:	5.0.2
 Release:	1
 License:	BSD-like (see docs)
 Group:		Development/Languages
 Source0:	http://www.lua.org/ftp/lua-%{version}.tar.gz
-# Source0-md5:	e0a450d84971a3f4563b98172d1e382c
+# Source0-md5:	e515b9a12d129eaa52f88b9686e0b6a1
 Source1:	http://www.lua.org/ftp/refman-%{_refman_version}.ps.gz
 # Source1-md5:	4b0cedef4880bf925da9537520d93b57
 Patch0:		lua5-link.patch
 URL:		http://www.lua.org/
-Requires:	%{name}-libs = %{version}
+Requires:	%{name}-libs = %{version}-%{release}
 Provides:	lua = %{version}
 Obsoletes:	lua < 4.0.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -56,7 +56,7 @@ Biblioteki lua 5.0.x.
 Summary:	Header files for Lua
 Summary(pl):	Pliki nag³ówkowe dla Lua
 Group:		Development/Languages
-Requires:	%{name}-libs = %{version}
+Requires:	%{name}-libs = %{version}-%{release}
 Provides:	lua-devel = %{version}
 Obsoletes:	lua-devel
 
@@ -72,7 +72,7 @@ dokumentacja samego jêzyka.
 Summary:	Static Lua libraries Lua
 Summary(pl):	Biblioteki statyczne Lua
 Group:		Development/Languages
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 Provides:	lua-static = %{version}
 Obsoletes:	lua-static
 
