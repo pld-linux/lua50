@@ -4,7 +4,7 @@ Summary(pl):	Prosty, lekki ale potê¿ny, osadzalny jêzyk programowania
 Name:		lua50
 Version:	5.0.2
 Release:	1
-License:	BSD-like (see docs)
+License:	MIT
 Group:		Development/Languages
 Source0:	http://www.lua.org/ftp/lua-%{version}.tar.gz
 # Source0-md5:	e515b9a12d129eaa52f88b9686e0b6a1
