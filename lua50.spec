@@ -3,7 +3,7 @@ Summary:	A simple lightweight powerful embeddable programming language
 Summary(pl):	Prosty, lekki ale potê¿ny, osadzalny jêzyk programowania
 Name:		lua50
 Version:	5.0.2
-Release:	2
+Release:	3
 License:	MIT
 Group:		Development/Languages
 Source0:	http://www.lua.org/ftp/lua-%{version}.tar.gz
@@ -68,7 +68,7 @@ Pliki nag³ówkowe potrzebne do w³±czenia Lua do programów w C/C++ oraz
 dokumentacja samego jêzyka.
 
 %package static
-Summary:	Static Lua libraries Lua
+Summary:	Static Lua libraries
 Summary(pl):	Biblioteki statyczne Lua
 Group:		Development/Languages
 Requires:	%{name}-devel = %{version}-%{release}
@@ -107,15 +107,13 @@ install -d $RPM_BUILD_ROOT{%{_libdir}/lua,%{_datadir}/lua}
 # change name from lua to lua50
 for i in $RPM_BUILD_ROOT%{_bindir}/* ; do mv $i{,50} ; done
 mv $RPM_BUILD_ROOT%{_libdir}/liblua{,50}.a
-mv $RPM_BUILD_ROOT%{_libdir}/liblua{,50}.so.5.0
 mv $RPM_BUILD_ROOT%{_libdir}/liblualib{,50}.a
-mv $RPM_BUILD_ROOT%{_libdir}/liblualib{,50}.so.5.0
 mv $RPM_BUILD_ROOT%{_mandir}/man1/lua{,50}.1
 mv $RPM_BUILD_ROOT%{_mandir}/man1/luac{,50}.1
 
 rm $RPM_BUILD_ROOT%{_libdir}/lib*.so
-ln -s liblua50.so.5.0 $RPM_BUILD_ROOT%{_libdir}/liblua50.so
-ln -s liblualib50.so.5.0 $RPM_BUILD_ROOT%{_libdir}/liblualib50.so
+ln -s liblua.so.5.0 $RPM_BUILD_ROOT%{_libdir}/liblua50.so
+ln -s liblualib.so.5.0 $RPM_BUILD_ROOT%{_libdir}/liblualib50.so
 rm -f doc/*.1
 
 %clean
@@ -138,7 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc refman.ps.gz doc test
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_includedir}/*
+%{_includedir}/lua50
 
 %files static
 %defattr(644,root,root,755)
