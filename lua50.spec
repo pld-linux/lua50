@@ -2,14 +2,14 @@
 Summary:	A simple lightweight powerful embeddable programming language
 Summary(pl):	Prosty, lekki ale potê¿ny, osadzalny jêzyk programowania
 Name:		lua50
-Version:	5.0
-Release:	3
+Version:	5.0.1
+Release:	1
 License:	BSD-like (see docs)
 Group:		Development/Languages
 Source0:	http://www.lua.org/ftp/lua-%{version}.tar.gz
-# Source0-md5:	6f14803fad389fb1cb15d17edfeddd91
+# Source0-md5:	e0a450d84971a3f4563b98172d1e382c
 Source1:	http://www.lua.org/ftp/refman-%{_refman_version}.ps.gz
-# Source1-md5:	5483b8f3b29c3c17ba15fdf483000c91
+# Source1-md5:	4b0cedef4880bf925da9537520d93b57
 Patch0:		lua5-link.patch
 URL:		http://www.lua.org/
 Requires:	%{name}-libs = %{version}
@@ -89,9 +89,10 @@ cp -f %{SOURCE1} refman.ps.gz
 %patch0 -p1
 
 %build
-%{__make} OPT="%{rpmcflags}" \
-          EXTRA_DEFS="-fPIC -DPIC -D_GNU_SOURCE" \
-	  all so sobin
+%{__make} all so sobin \
+	MYCFLAGS="%{rpmcflags} -fPIC" \
+	EXTRA_DEFS="-DPIC -D_GNU_SOURCE"
+
 rm -f test/{lua,luac}
 
 %install
