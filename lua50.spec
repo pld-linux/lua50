@@ -3,7 +3,7 @@ Summary:	A simple lightweight powerful embeddable programming language
 Summary(pl):	Prosty, lekki ale potê¿ny, osadzalny jêzyk programowania
 Name:		lua50
 Version:	5.0
-Release:	2
+Release:	3
 License:	BSD-like (see docs)
 Group:		Development/Languages
 Source0:	http://www.lua.org/ftp/lua-%{version}.tar.gz
@@ -37,6 +37,13 @@ zarz±dzanie pamiêci± z od¶miecaczem, co czyni go idealnym do
 konfiguracji, skryptów i szybkich prototypów.
 
 Ta wersja ma wkompilowan± obs³ugê ³adowania dynamicznych bibliotek.
+
+%package libs
+Summary:	liblua
+Group:		Development/Languages
+
+%description libs
+liblua
 
 %package devel
 Summary:	Header files for Lua
@@ -96,15 +103,17 @@ rm -f doc/*.1
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post   libs -p /sbin/ldconfig
+%postun libs -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
-%doc COPYRIGHT HISTORY README
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_mandir}/man1/*
+
+%files libs
+%doc COPYRIGHT HISTORY README
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
