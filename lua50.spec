@@ -49,7 +49,7 @@ liblua
 Summary:	Header files for Lua
 Summary(pl):	Pliki nag³ówkowe dla Lua
 Group:		Development/Languages
-Requires:	%{name} = %{version}
+Requires:	%{name}-libs = %{version}
 Provides:	lua-devel = %{version}
 Obsoletes:	lua-devel
 
