@@ -10,9 +10,10 @@ Source0:	http://www.lua.org/ftp/lua-%{version}.tar.gz
 Source1:	http://www.lua.org/ftp/refman-%{_refman_version}.ps.gz
 Patch0:		lua5-link.patch
 URL:		http://www.lua.org/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Requires:	%{name}-libs = %{version}
 Provides:	lua = %{version}
 Obsoletes:	lua < 4.0.1
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Lua is a powerful, light-weight programming language designed for
@@ -39,11 +40,15 @@ konfiguracji, skryptów i szybkich prototypów.
 Ta wersja ma wkompilowan± obs³ugê ³adowania dynamicznych bibliotek.
 
 %package libs
-Summary:	liblua
+Summary:	lua 5.0.x libraries
+Summary(pl):	Biblioteki lua 5.0.x
 Group:		Development/Languages
 
 %description libs
-liblua
+lua 5.0.x libraries.
+
+%description libs -l pl
+Biblioteki lua 5.0.x.
 
 %package devel
 Summary:	Header files for Lua
