@@ -3,7 +3,7 @@ Summary:	A simple lightweight powerful embeddable programming language
 Summary(pl):	Prosty, lekki ale potê¿ny, osadzalny jêzyk programowania
 Name:		lua50
 Version:	5.0
-Release:	1
+Release:	2
 License:	BSD-like (see docs)
 Group:		Development/Languages
 Source0:	http://www.lua.org/ftp/lua-%{version}.tar.gz
@@ -12,7 +12,7 @@ Patch0:		lua5-link.patch
 URL:		http://www.lua.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Provides:	lua = %{version}
-Obsoletes:	lua
+Obsoletes:	lua < 4.0.1
 
 %description
 Lua is a powerful, light-weight programming language designed for
