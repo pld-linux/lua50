@@ -1,3 +1,6 @@
+
+%bcond_with     luastatic        # build dietlibc-based static lua version
+
 %define _refman_version 5.0
 Summary:	A simple lightweight powerful embeddable programming language
 Summary(pl):	Prosty, lekki ale potê¿ny, osadzalny jêzyk programowania
@@ -12,6 +15,7 @@ Source1:	http://www.lua.org/ftp/refman-%{_refman_version}.ps.gz
 # Source1-md5:	4b0cedef4880bf925da9537520d93b57
 Patch0:		lua5-link.patch
 URL:		http://www.lua.org/
+%{?with_luastatic:BuildRequires:       dietlibc-devel}
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	lua = %{version}
 Obsoletes:	lua < 4.0.1
@@ -80,6 +84,19 @@ Static Lua libraries.
 %description static -l pl
 Biblioteki statyczne Lua.
 
+%if %{with luastatic}
+%package luastatic
+Summary:        Static Lua
+Summary(pl):    Statycznie skonsolidowany interpreter lua
+Group:		Development/Languages
+
+%description luastatic
+Static lua
+
+%description luastatic -l pl
+Statycznie skonsolidowany interpreter lua.
+%endif
+
 %prep
 %setup -q -n lua-%{version}
 cp -f %{SOURCE1} refman.ps.gz
@@ -87,6 +104,15 @@ cp -f %{SOURCE1} refman.ps.gz
 %patch0 -p1
 
 %build
+%if %{with luastatic}
+%{__make} all sobin \
+	CC="%{_target_cpu}-dietlibc-gcc" \
+	MYCFLAGS="%{rpmcflags} -fPIC" \
+	EXTRA_DEFS="-DPIC -D_GNU_SOURCE"
+mv bin bin.static
+%{__make} clean
+%endif
+
 %{__make} all so sobin \
 	CC="%{__cc}" \
 	MYCFLAGS="%{rpmcflags} -fPIC" \
@@ -117,6 +143,11 @@ ln -s liblua.so.5.0 $RPM_BUILD_ROOT%{_libdir}/liblua50.so
 ln -s liblualib.so.5.0 $RPM_BUILD_ROOT%{_libdir}/liblualib50.so
 rm -f doc/*.1
 
+%if %{with luastatic}
+install bin.static/lua $RPM_BUILD_ROOT%{_bindir}/lua50.static
+install bin.static/luac $RPM_BUILD_ROOT%{_bindir}/luac50.static
+%endif
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -125,7 +156,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/lua*50
+
 %{_mandir}/man1/*
 
 %files libs
@@ -142,3 +174,9 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%if %{with luastatic}
+%files luastatic
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/*static
+%endif
