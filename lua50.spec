@@ -88,6 +88,7 @@ cp -f %{SOURCE1} refman.ps.gz
 
 %build
 %{__make} all so sobin \
+	CC="%{__cc}" \
 	MYCFLAGS="%{rpmcflags} -fPIC" \
 	EXTRA_DEFS="-DPIC -D_GNU_SOURCE"
 
