@@ -112,6 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %files libs
+%defattr(644,root,root,755)
 %doc COPYRIGHT HISTORY README
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
