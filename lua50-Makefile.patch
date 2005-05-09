@@ -1,0 +1,29 @@
+--- lua-5.0.2/Makefile.orig	2005-05-09 02:51:34.000000000 +0200
++++ lua-5.0.2/Makefile	2005-05-09 03:14:07.000000000 +0200
+@@ -24,17 +24,12 @@
+ test:	all
+ 	bin/lua test/hello.lua
+ 
+-# remove debug information from binaries
+-strip:
+-	$(STRIP) bin/*
+-
+ # official installation
+-install: all strip
++install: all
+ 	mkdir -p $(INSTALL_BIN) $(INSTALL_INC) $(INSTALL_LIB) $(INSTALL_MAN)
+ 	$(INSTALL_EXEC) bin/* $(INSTALL_BIN)
+ 	$(INSTALL_DATA) include/*.h $(INSTALL_INC)
+ 	$(INSTALL_DATA) lib/*.a $(INSTALL_LIB)
+-	$(INSTALL_DATA) doc/*.1 $(INSTALL_MAN)
+ 
+ # shared libraries (for Linux)
+ so:
+@@ -77,7 +72,6 @@
+ 	@echo "EXTRA_LIBS = $(EXTRA_LIBS)"
+ 	@echo "AR = $(AR)"
+ 	@echo "RANLIB = $(RANLIB)"
+-	@echo "STRIP = $(STRIP)"
+ 	@echo "INSTALL_ROOT = $(INSTALL_ROOT)"
+ 	@echo "INSTALL_BIN = $(INSTALL_BIN)"
+ 	@echo "INSTALL_INC = $(INSTALL_INC)"
