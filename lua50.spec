@@ -6,7 +6,7 @@ Summary:	A simple lightweight powerful embeddable programming language
 Summary(pl):	Prosty, lekki ale potê¿ny, osadzalny jêzyk programowania
 Name:		lua50
 Version:	5.0.2
-Release:	3
+Release:	4
 License:	MIT
 Group:		Development/Languages
 Source0:	http://www.lua.org/ftp/lua-%{version}.tar.gz
@@ -15,6 +15,7 @@ Source0:	http://www.lua.org/ftp/lua-%{version}.tar.gz
 Source1:	http://www.lua.org/ftp/refman-%{_refman_version}.ps.gz
 # Source1-md5:	4b0cedef4880bf925da9537520d93b57
 Patch0:		lua5-link.patch
+Patch1:		%{name}-Makefile.patch
 URL:		http://www.lua.org/
 %{?with_luastatic:BuildRequires:       dietlibc-devel}
 Requires:	%{name}-libs = %{version}-%{release}
@@ -101,8 +102,8 @@ Statycznie skonsolidowany interpreter lua.
 %prep
 %setup -q -n lua-%{version}
 cp -f %{SOURCE1} refman.ps.gz
-
 %patch0 -p1
+%patch1 -p1
 
 %build
 %if %{with luastatic}
@@ -123,7 +124,7 @@ rm -f test/{lua,luac}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_libdir}/lua,%{_datadir}/lua}
+install -d $RPM_BUILD_ROOT%{_libdir}/lua}
 
 %{__make} soinstall install \
 	INSTALL_ROOT=$RPM_BUILD_ROOT%{_prefix} \
@@ -136,13 +137,10 @@ install -d $RPM_BUILD_ROOT{%{_libdir}/lua,%{_datadir}/lua}
 for i in $RPM_BUILD_ROOT%{_bindir}/* ; do mv $i{,50} ; done
 mv $RPM_BUILD_ROOT%{_libdir}/liblua{,50}.a
 mv $RPM_BUILD_ROOT%{_libdir}/liblualib{,50}.a
-mv $RPM_BUILD_ROOT%{_mandir}/man1/lua{,50}.1
-mv $RPM_BUILD_ROOT%{_mandir}/man1/luac{,50}.1
 
 rm $RPM_BUILD_ROOT%{_libdir}/lib*.so
 ln -s liblua.so.5.0 $RPM_BUILD_ROOT%{_libdir}/liblua50.so
 ln -s liblualib.so.5.0 $RPM_BUILD_ROOT%{_libdir}/liblualib50.so
-rm -f doc/*.1
 
 %if %{with luastatic}
 install bin.static/lua $RPM_BUILD_ROOT%{_bindir}/lua50.static
@@ -158,7 +156,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/lua*50
-%{_mandir}/man1/*
 
 %files libs
 %defattr(644,root,root,755)
