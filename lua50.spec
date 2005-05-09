@@ -1,7 +1,7 @@
-
+#
+# Conditional build:
 %bcond_with     luastatic        # build dietlibc-based static lua version
-
-%define _refman_version 5.0
+#
 Summary:	A simple lightweight powerful embeddable programming language
 Summary(pl):	Prosty, lekki ale potê¿ny, osadzalny jêzyk programowania
 Name:		lua50
@@ -11,6 +11,7 @@ License:	MIT
 Group:		Development/Languages
 Source0:	http://www.lua.org/ftp/lua-%{version}.tar.gz
 # Source0-md5:	e515b9a12d129eaa52f88b9686e0b6a1
+%define		_refman_version	5.0
 Source1:	http://www.lua.org/ftp/refman-%{_refman_version}.ps.gz
 # Source1-md5:	4b0cedef4880bf925da9537520d93b57
 Patch0:		lua5-link.patch
