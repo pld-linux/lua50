@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with     luastatic        # build dietlibc-based static lua version
+%bcond_with	luastatic        # build dietlibc-based static lua version
 #
 Summary:	A simple lightweight powerful embeddable programming language
 Summary(pl):	Prosty, lekki ale potê¿ny, osadzalny jêzyk programowania
