@@ -115,7 +115,7 @@ mv bin bin.static
 %{__make} clean
 %endif
 
-%{__make} all so sobin \
+%{__make} -j1 all so sobin \
 	CC="%{__cc}" \
 	MYCFLAGS="%{rpmcflags} -fPIC" \
 	EXTRA_DEFS="-DPIC -D_GNU_SOURCE"
