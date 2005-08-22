@@ -155,7 +155,7 @@ exec_prefix=%{_exec_prefix}
 includedir=%{_includedir}/%{name}
 libdir=%{_libdir}
 interpreter=%{_bindir}/%{name}
-compiler=%{_bindir}/%{name}
+compiler=%{_bindir}/luac50
 
 Name: Lua
 Description: An extension programming language
