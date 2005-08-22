@@ -6,7 +6,7 @@ Summary:	A simple lightweight powerful embeddable programming language
 Summary(pl):	Prosty, lekki ale potê¿ny, osadzalny jêzyk programowania
 Name:		lua50
 Version:	5.0.2
-Release:	4
+Release:	4.1
 License:	MIT
 Group:		Development/Languages
 Source0:	http://www.lua.org/ftp/lua-%{version}.tar.gz
@@ -147,6 +147,23 @@ install bin.static/lua $RPM_BUILD_ROOT%{_bindir}/lua50.static
 install bin.static/luac $RPM_BUILD_ROOT%{_bindir}/luac50.static
 %endif
 
+# create pkgconfig file
+install -d $RPM_BUILD_ROOT%{_pkgconfigdir}
+cat > $RPM_BUILD_ROOT%{_pkgconfigdir}/%{name}.pc <<'EOF'
+prefix=%{_prefix}
+exec_prefix=%{_exec_prefix}
+includedir=%{_includedir}/%{name}
+libdir=%{_libdir}
+interpreter=%{_bindir}/%{name}
+compiler=%{_bindir}/%{name}
+
+Name: Lua
+Description: An extension programming language
+Version: %{version}
+Cflags: -I%{_includedir}/%{name}
+Libs: -L%{_libdir} -llua50 -llualib50 -ldl -lm
+EOF
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -167,6 +184,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc refman.ps.gz doc test
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/lua50
+%{_pkgconfigdir}/%{name}.pc
 
 %files static
 %defattr(644,root,root,755)
