@@ -6,7 +6,7 @@ Summary:	A simple lightweight powerful embeddable programming language
 Summary(pl):	Prosty, lekki ale potê¿ny, osadzalny jêzyk programowania
 Name:		lua50
 Version:	5.0.2
-Release:	4.1
+Release:	5
 License:	MIT
 Group:		Development/Languages
 Source0:	http://www.lua.org/ftp/lua-%{version}.tar.gz
