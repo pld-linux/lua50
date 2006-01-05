@@ -134,7 +134,7 @@ install -d $RPM_BUILD_ROOT%{_libdir}/lua}
 	INSTALL_MAN=$RPM_BUILD_ROOT%{_mandir}/man1
 
 # change name from lua to lua50
-for i in $RPM_BUILD_ROOT%{_bindir}/* ; do mv $i{,50} ; done
+for i in $RPM_BUILD_ROOT%{_bindir}/* ; do mv ${i}{,50} ; done
 mv $RPM_BUILD_ROOT%{_libdir}/liblua{,50}.a
 mv $RPM_BUILD_ROOT%{_libdir}/liblualib{,50}.a
 
