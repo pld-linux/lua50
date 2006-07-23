@@ -1,6 +1,6 @@
 --- lua-5.0.2/Makefile.orig	2005-05-09 02:51:34.000000000 +0200
 +++ lua-5.0.2/Makefile	2005-05-09 03:14:07.000000000 +0200
-@@ -24,17 +24,12 @@
+@@ -24,17 +24,14 @@
  test:	all
  	bin/lua test/hello.lua
  
@@ -16,6 +16,8 @@
  	$(INSTALL_DATA) include/*.h $(INSTALL_INC)
  	$(INSTALL_DATA) lib/*.a $(INSTALL_LIB)
 -	$(INSTALL_DATA) doc/*.1 $(INSTALL_MAN)
++	$(INSTALL_DATA) doc/lua.1 $(INSTALL_MAN)/lua50.1
++	$(INSTALL_DATA) doc/luac.1 $(INSTALL_MAN)/luac50.1
  
  # shared libraries (for Linux)
  so:
