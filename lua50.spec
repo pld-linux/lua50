@@ -6,7 +6,7 @@ Summary:	A simple lightweight powerful embeddable programming language
 Summary(pl):	Prosty, lekki ale potê¿ny, osadzalny jêzyk programowania
 Name:		lua50
 Version:	5.0.3
-Release:	1
+Release:	2
 License:	MIT
 Group:		Development/Languages
 Source0:	http://www.lua.org/ftp/lua-%{version}.tar.gz
@@ -86,18 +86,16 @@ Static Lua libraries.
 %description static -l pl
 Biblioteki statyczne Lua.
 
-%if %{with luastatic}
 %package luastatic
-Summary:        Static Lua
+Summary:        Static Lua interpreter
 Summary(pl):    Statycznie skonsolidowany interpreter lua
 Group:		Development/Languages
 
 %description luastatic
-Static lua
+Static lua interpreter.
 
 %description luastatic -l pl
 Statycznie skonsolidowany interpreter lua.
-%endif
 
 %prep
 %setup -q -n lua-%{version}
@@ -149,7 +147,7 @@ install bin.static/luac $RPM_BUILD_ROOT%{_bindir}/luac50.static
 
 # create pkgconfig file
 install -d $RPM_BUILD_ROOT%{_pkgconfigdir}
-cat > $RPM_BUILD_ROOT%{_pkgconfigdir}/lua.pc <<'EOF'
+cat > $RPM_BUILD_ROOT%{_pkgconfigdir}/lua50.pc <<'EOF'
 prefix=%{_prefix}
 exec_prefix=%{_exec_prefix}
 includedir=%{_includedir}/%{name}
@@ -172,7 +170,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/lua*50
+%attr(755,root,root) %{_bindir}/lua50
+%attr(755,root,root) %{_bindir}/luac50
+%{_mandir}/man1/lua50.1*
+%{_mandir}/man1/luac50.1*
 
 %files libs
 %defattr(644,root,root,755)
@@ -184,7 +185,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc refman.ps.gz doc test
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/lua50
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/lua50.pc
 
 %files static
 %defattr(644,root,root,755)
