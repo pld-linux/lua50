@@ -88,7 +88,7 @@ Biblioteki statyczne Lua.
 
 %package luastatic
 Summary:        Static Lua interpreter
-Summary(pl):    Statycznie skonsolidowany interpreter lua
+Summary(pl.UTF-8):   Statycznie skonsolidowany interpreter lua
 Group:		Development/Languages
 
 %description luastatic
