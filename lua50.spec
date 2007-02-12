@@ -3,7 +3,7 @@
 %bcond_with	luastatic        # build dietlibc-based static lua version
 #
 Summary:	A simple lightweight powerful embeddable programming language
-Summary(pl):	Prosty, lekki ale potê¿ny, osadzalny jêzyk programowania
+Summary(pl.UTF-8):   Prosty, lekki ale potÄ™Å¼ny, osadzalny jÄ™zyk programowania
 Name:		lua50
 Version:	5.0.3
 Release:	2
@@ -35,32 +35,32 @@ configuration, scripting, and rapid prototyping.
 
 This version has compiled in support for dynamic libraries in baselib.
 
-%description -l pl
-Lua to jêzyk programowania o du¿ych mo¿liwo¶ciach ale lekki,
-przeznaczony do rozszerzania aplikacji. Jest te¿ czêsto u¿ywany jako
-samodzielny jêzyk ogólnego przeznaczenia. £±czy prost± proceduraln±
-sk³adniê (podobn± do Pascala) z potê¿nymi konstrukcjami opisu danych
-bazuj±cymi na tablicach asocjacyjnych i rozszerzalnej sk³adni. Lua ma
-dynamiczny system typów, interpretowany z bytecodu i automatyczne
-zarz±dzanie pamiêci± z od¶miecaczem, co czyni go idealnym do
-konfiguracji, skryptów i szybkich prototypów.
+%description -l pl.UTF-8
+Lua to jÄ™zyk programowania o duÅ¼ych moÅ¼liwoÅ›ciach ale lekki,
+przeznaczony do rozszerzania aplikacji. Jest teÅ¼ czÄ™sto uÅ¼ywany jako
+samodzielny jÄ™zyk ogÃ³lnego przeznaczenia. ÅÄ…czy prostÄ… proceduralnÄ…
+skÅ‚adniÄ™ (podobnÄ… do Pascala) z potÄ™Å¼nymi konstrukcjami opisu danych
+bazujÄ…cymi na tablicach asocjacyjnych i rozszerzalnej skÅ‚adni. Lua ma
+dynamiczny system typÃ³w, interpretowany z bytecodu i automatyczne
+zarzÄ…dzanie pamiÄ™ciÄ… z odÅ›miecaczem, co czyni go idealnym do
+konfiguracji, skryptÃ³w i szybkich prototypÃ³w.
 
-Ta wersja ma wkompilowan± obs³ugê ³adowania dynamicznych bibliotek.
+Ta wersja ma wkompilowanÄ… obsÅ‚ugÄ™ Å‚adowania dynamicznych bibliotek.
 
 %package libs
 Summary:	lua 5.0.x libraries
-Summary(pl):	Biblioteki lua 5.0.x
+Summary(pl.UTF-8):   Biblioteki lua 5.0.x
 Group:		Development/Languages
 
 %description libs
 lua 5.0.x libraries.
 
-%description libs -l pl
+%description libs -l pl.UTF-8
 Biblioteki lua 5.0.x.
 
 %package devel
 Summary:	Header files for Lua
-Summary(pl):	Pliki nag³ówkowe dla Lua
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe dla Lua
 Group:		Development/Languages
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	lua-devel = %{version}
@@ -69,13 +69,13 @@ Provides:	lua-devel = %{version}
 Header files needed to embed Lua in C/C++ programs and docs for the
 language.
 
-%description devel -l pl
-Pliki nag³ówkowe potrzebne do w³±czenia Lua do programów w C/C++ oraz
-dokumentacja samego jêzyka.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe potrzebne do wÅ‚Ä…czenia Lua do programÃ³w w C/C++ oraz
+dokumentacja samego jÄ™zyka.
 
 %package static
 Summary:	Static Lua libraries
-Summary(pl):	Biblioteki statyczne Lua
+Summary(pl.UTF-8):   Biblioteki statyczne Lua
 Group:		Development/Languages
 Requires:	%{name}-devel = %{version}-%{release}
 Provides:	lua-static = %{version}
@@ -83,7 +83,7 @@ Provides:	lua-static = %{version}
 %description static
 Static Lua libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne Lua.
 
 %package luastatic
@@ -94,7 +94,7 @@ Group:		Development/Languages
 %description luastatic
 Static lua interpreter.
 
-%description luastatic -l pl
+%description luastatic -l pl.UTF-8
 Statycznie skonsolidowany interpreter lua.
 
 %prep
