@@ -3,7 +3,7 @@
 %bcond_with	luastatic        # build dietlibc-based static lua version
 #
 Summary:	A simple lightweight powerful embeddable programming language
-Summary(pl.UTF-8):   Prosty, lekki ale potężny, osadzalny język programowania
+Summary(pl.UTF-8):	Prosty, lekki ale potężny, osadzalny język programowania
 Name:		lua50
 Version:	5.0.3
 Release:	2
@@ -49,7 +49,7 @@ Ta wersja ma wkompilowaną obsługę ładowania dynamicznych bibliotek.
 
 %package libs
 Summary:	lua 5.0.x libraries
-Summary(pl.UTF-8):   Biblioteki lua 5.0.x
+Summary(pl.UTF-8):	Biblioteki lua 5.0.x
 Group:		Development/Languages
 
 %description libs
@@ -60,7 +60,7 @@ Biblioteki lua 5.0.x.
 
 %package devel
 Summary:	Header files for Lua
-Summary(pl.UTF-8):   Pliki nagłówkowe dla Lua
+Summary(pl.UTF-8):	Pliki nagłówkowe dla Lua
 Group:		Development/Languages
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	lua-devel = %{version}
@@ -75,7 +75,7 @@ dokumentacja samego języka.
 
 %package static
 Summary:	Static Lua libraries
-Summary(pl.UTF-8):   Biblioteki statyczne Lua
+Summary(pl.UTF-8):	Biblioteki statyczne Lua
 Group:		Development/Languages
 Requires:	%{name}-devel = %{version}-%{release}
 Provides:	lua-static = %{version}
@@ -88,7 +88,7 @@ Biblioteki statyczne Lua.
 
 %package luastatic
 Summary:        Static Lua interpreter
-Summary(pl.UTF-8):   Statycznie skonsolidowany interpreter lua
+Summary(pl.UTF-8):	Statycznie skonsolidowany interpreter lua
 Group:		Development/Languages
 
 %description luastatic
