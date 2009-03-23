@@ -17,7 +17,7 @@ Source1:	http://www.lua.org/ftp/refman-%{_refman_version}.ps.gz
 Patch0:		lua5-link.patch
 Patch1:		%{name}-Makefile.patch
 URL:		http://www.lua.org/
-%{?with_luastatic:BuildRequires:       dietlibc-devel}
+%{?with_luastatic:BuildRequires:       dietlibc-static}
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	lua = %{version}
 Obsoletes:	lua < 4.0.1
@@ -106,8 +106,8 @@ cp -f %{SOURCE1} refman.ps.gz
 %build
 %if %{with luastatic}
 %{__make} all sobin \
-	CC="%{_target_cpu}-dietlibc-gcc" \
-	MYCFLAGS="%{rpmcflags} -fPIC" \
+	CC="diet %{__cc}" \
+	MYCFLAGS="%{rpmcflags} -fPIC -Os" \
 	EXTRA_DEFS="-DPIC -D_GNU_SOURCE"
 mv bin bin.static
 %{__make} clean
