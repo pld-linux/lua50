@@ -1,0 +1,3 @@
+- there is no 'lua' package anymore; from now on lua packages will be named
+  lua40, lua50 and so forth, since they are incompatible and some software
+  may require one version or another;
