@@ -16,8 +16,8 @@
  	$(INSTALL_DATA) include/*.h $(INSTALL_INC)
  	$(INSTALL_DATA) lib/*.a $(INSTALL_LIB)
 -	$(INSTALL_DATA) doc/*.1 $(INSTALL_MAN)
-+	$(INSTALL_DATA) doc/lua.1 $(INSTALL_MAN)/lua50.1
-+	$(INSTALL_DATA) doc/luac.1 $(INSTALL_MAN)/luac50.1
++	$(INSTALL_DATA) doc/lua.1 $(INSTALL_MAN)/lua5.0.1
++	$(INSTALL_DATA) doc/luac.1 $(INSTALL_MAN)/luac5.0.1
  
  # shared libraries (for Linux)
  so:
